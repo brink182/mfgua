@@ -7,6 +7,8 @@
 // @match        https://flowgpt.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=flowgpt.com
 // @grant        none
+// @updateURL    https://github.com/brink182/mfgua/raw/main/mfgua.user.js
+// @downloadURL  https://github.com/brink182/mfgua/raw/main/mfgua.user.js
 // ==/UserScript==
 
 (function() {
