@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         MFGUA
-// @namespace    https://github.com/brink182/
+// @namespace    com.github.brink182
 // @version      0.2.0
 // @description  make flowGPT usable again
 // @author       brink182
