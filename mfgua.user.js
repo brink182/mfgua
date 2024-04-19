@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         MFGUA
-// @namespace    http://tampermonkey.net/
+// @namespace    https://github.com/brink182/
 // @version      0.2.0
 // @description  make flowGPT usable again
-// @author       You
+// @author       brink182
 // @match        https://flowgpt.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=flowgpt.com
 // @grant        none
