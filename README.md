@@ -5,7 +5,7 @@ A Tempermonkey script that brings back a few features from the legacy FlowGPT We
 - Hiding the new sidebar on legacy chat page
 - Improve usability on tablets by always showing a send button on the new chat page
 
-<sup>*</sup> This is possible because that page is only hidden in the new UI. **Backup your important chats now**
+<sup>_*_</sup> This is possible because that page is only hidden in the new UI. **Backup your important chats now**
 
 # Installation
 1. Install [Firefox](https://www.mozilla.org/firefox/new/) or another modern browser on your device
