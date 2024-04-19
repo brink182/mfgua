@@ -15,7 +15,7 @@ A Tempermonkey script that brings back a few features from the legacy FlowGPT We
 If step 3 does not do anything usefull see [Tampermonkey FAQ](https://www.tampermonkey.net/faq.php#Q102) for alternative installation methods. The scripts full URL is https://github.com/brink182/mfgua/raw/main/mfgua.user.js
 
 # Usage
-Open [flowGPT](https://flowgpt.com) normaly. The sidebar should show a a new entry "Chat" wich leads to the [legacy chat page](https://flowgpt.com/chat) where you should see a few bare chat models and all your old chat histories.
+Open [flowGPT](https://flowgpt.com) normaly. The sidebar should show a new "Chat" entry which leads to the [legacy chat page](https://flowgpt.com/chat) with a few bare chat models and all your old chat histories.
 
 # Known issues
 - New chats do not show up on the legacy chat page
