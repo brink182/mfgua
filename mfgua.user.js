@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         MFGUA
 // @namespace    com.github.brink182
-// @version      0.2.0
+// @version      0.2.1
 // @description  make flowGPT usable again
 // @author       brink182
 // @match        https://flowgpt.com/*
@@ -13,14 +13,14 @@
 
 (function() {
     'use strict';
-    const last = { send: [] };
+    const last = {};
     var oldSend = [];
     const marker = window.crypto.randomUUID().toLowerCase().replaceAll('-','');
 
-    function initMenu() {
+    function initNav() {
         const explore = document.querySelector("a[href='/explore']");
         if (explore === null) {
-            console.log("menu not found");
+            console.log("sidebar not found");
         }
 
         const chat = document.createElement("a");
@@ -32,8 +32,25 @@
     }
 
     function updateSidebar() {
+        const hideSidebar = window.location.pathname === "/chat";
         for (const aside of document.getElementsByTagName("aside")) {
-            aside.parentNode.style.display = window.location.pathname === "/chat" ? "none" : null;
+            aside.parentNode.style.display = hideSidebar ? "none" : null;
+        }
+        if (hideSidebar) {
+            return;
+        }
+        const chat = document.querySelector(`a[href='/chat'][data-${marker}='true']`);
+        const chatSvg = chat.firstElementChild.firstElementChild;
+        const chatText = chatSvg.nextElementSibling;
+        const collapsed = chat.nextElementSibling.firstElementChild.childElementCount === 1;
+        if (collapsed) {
+            chatText.style.display = "none";
+            chatSvg.style.height = "30px";
+            chatSvg.style.width = "30px";
+        } else {
+            chatText.style.display = null;
+            chatSvg.style.height = null;
+            chatSvg.style.width = null;
         }
     }
 
@@ -62,8 +79,8 @@
     window.addEventListener('popstate', (ev) => console.log(ev));
 
     new MutationObserver(() => {
-        if (document.querySelector("a[href='/chat'][data-" + marker + "='true']") === null) {
-            initMenu();
+        if (document.querySelector(`a[href='/chat'][data-${marker}='true']`) === null) {
+            initNav();
         }
         updateSidebar();
         const chatMenu = document.querySelector("button[id^='menu-button-:r'].chakra-button.chakra-menu__menu-button");
