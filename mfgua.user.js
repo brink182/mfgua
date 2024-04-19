@@ -2,6 +2,7 @@
 // @name         MFGUA
 // @namespace    com.github.brink182
 // @version      0.2.1
+// @license      GPL3
 // @description  make flowGPT usable again
 // @author       brink182
 // @match        https://flowgpt.com/*
