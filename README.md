@@ -1,11 +1,10 @@
 # MFGUA - Make FlowGPT useable again
-A Tempermonkey script that brings back a few features from the legacy FlowGPT WebUI.
+A Tempermonkey script that brings back a few features from the classic FlowGPT WebUI.
 ## Features
-- Easy access to the legacy chat page with bare chat models and your old chat history<sup>☥</sup>
-- Hiding the new sidebar on legacy chat page
+- Full access to the classic UI<sup>☥</sup>
 - Improve usability on tablets by always showing a send button on the new chat page
 
-<sup>☥</sup> This is possible because that page is only hidden in the new UI. **Backup your important chats now**
+<sup>☥</sup> This is possible because that page is still accesible for some devices. **Backup your important chats now**
 
 # Installation
 1. Install [Firefox](https://www.mozilla.org/firefox/new/) or another modern browser on your device
@@ -15,11 +14,10 @@ A Tempermonkey script that brings back a few features from the legacy FlowGPT We
 If step 3 does not do anything usefull see [Tampermonkey FAQ](https://www.tampermonkey.net/faq.php#Q102) for alternative installation methods. The scripts full URL is https://github.com/brink182/mfgua/raw/main/mfgua.user.js
 
 # Usage
-Open [flowGPT](https://flowgpt.com) normaly. The sidebar should show a new "Chat" entry which leads to the [legacy chat page](https://flowgpt.com/chat) with a few bare chat models and all your old chat histories.
+Open [flowGPT](https://flowgpt.com) normaly and login. In the user menu (three dots right to your username on new UI or your avatar on classic UI) should appear the option "Toggle UI". The option loads the other UI variant.
 
 # Known issues
-- New chats do not show up on the legacy chat page
-- Legacy chat page needs quite some time to load
+- New chats do not show up on the classic chat page and vice versa
 - The script's method for monitoring changes is not optimized. Performance might take a small hit.
 
 # Unknown issues
