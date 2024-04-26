@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         MFGUA
 // @namespace    com.github.brink182
-// @version      0.3.0
+// @version      0.3.1
 // @license      GPL3
-// @description  make flowGPT usable again
+// @description  make FlowGPT usable again
 // @author       brink182
 // @match        https://flowgpt.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=flowgpt.com
@@ -29,7 +29,7 @@
             old.parentNode.removeChild(old);
         }
         if (text instanceof HTMLTextAreaElement === false) {
-            console.log(["Textarea expected", text]);
+            console.log("Textarea expected ", text);
             return;
         }
 
@@ -54,30 +54,32 @@
 
     async function toggleUiVariant() {
         const classic = (document.getElementsByTagName("aside").length === 0);
+        const oldVariant = classic ? "classic" : "modern";
         const oldDeviceId = getCurrentDeviceId();
-        state.deviceIds[classic ? "classic" : "modern"] = oldDeviceId;
+        state.deviceIds[oldVariant] = oldDeviceId;
         storeState();
-        const newDeviceId = state.deviceIds[classic ? "modern" : "classic"];
-        if (newDeviceId) {
+        const newVariant = classic ? "modern" : "classic";
+        const newDeviceId = state.deviceIds[newVariant];
+        if (newDeviceId && newDeviceId !== oldDeviceId) {
             setCurrentDeviceId(newDeviceId);
-            window.location.reload();
+            window.location.reload(true);
+            return;
+        }
+        var stillClassic = classic;
+        for (var i = 0; stillClassic === classic && i < 4; i++) {
+            setCurrentDeviceId("");
+            const loc = document.location;
+            const response = await fetch(loc.protocol + "//" + loc.host, {cache: "no-store"});
+            stillClassic = !(await response.text()).includes("</aside>");
+            console.log("Got ", stillClassic ? "classic" : "modern", " deviceId: ", getCurrentDeviceId(), response);
+        }
+        if (stillClassic === classic) {
+            setCurrentDeviceId(oldDeviceId);
+            GM_notification("MFGUA - Error", "Could not switch to " + newVariant + " UI");
         } else {
-            var stillClassic = classic;
-            for (var i = 0; stillClassic === classic && i < 4; i++) {
-                setCurrentDeviceId("");
-                const loc = document.location;
-                const response = await fetch(loc.protocol + "//" + loc.host, {cahe: "no-store"});
-                stillClassic = !(await response.text()).includes("</aside>");
-                console.log("Got ", stillClassic ? "classic" : "modern", " deviceId: ", getCurrentDeviceId());
-            }
-            if (stillClassic === classic) {
-                setCurrentDeviceId(oldDeviceId);
-                GM_notification("MFGUA - Error", "Could not switch to " + (classic ? "modern" : "classic") + " UI");
-            } else {
-                state.deviceIds[classic ? "modern" : "classic"] = getCurrentDeviceId();
-                storeState();
-                window.location.reload();
-            }
+            state.deviceIds[newVariant] = getCurrentDeviceId();
+            storeState();
+            window.location.reload(true);
         }
     }
 

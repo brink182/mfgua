@@ -18,6 +18,7 @@ Open [flowGPT](https://flowgpt.com) normaly and login. In the user menu (three d
 
 # Known issues
 - New chats do not show up on the classic chat page and vice versa
+- UI may change back after "Toggel UI" is used, because the other variant is still cached. Reload or use "Toggle UI" again.
 - The script's method for monitoring changes is not optimized. Performance might take a small hit.
 
 # Unknown issues
